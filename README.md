@@ -54,10 +54,34 @@ Copy the assembly jar found under spark-cassandra-connector-java/target/scala-2.
 
 ## Data & Datastructures
 
-Get up the Datastructures and import the data from the movielens project
+Start a CQL Sessions from the repo root, e.g ```ccm node1 cqlsh```
 
+### Cassandra Keyspaces & Tables
 
+Create the Cassandra Keyspace and Tables using the provided schema.cql
 
+```SOURCE './schema.cql'```
+```USE movie```
+
+### Load the data
+
+- Load the latest Dataset from the link above and copy the file in the repo root
+- For the movies DON'T use the Data from the project, but the changed dataset provided in this repo: `data-changed/movies.zip` I added some years and fixed some formatting issues in this file. Just unzip the file.
+- Import the Data using the COPY Command. The Ratings might need up to 2 hrs for import.
+
+        COPY movies_raw (movieid, title, genres) FROM 'data-changed/movies.csv' with header= true;
+        COPY tags_by_user FROM 'tags.csv' WITH header=true;
+        COPY ratings_by_user FROM 'ratings.csv' with header=true 
+
+Now all the data you need is inside your cassandra cluster and you are ready to go!
+
+## Spark
+
+For some examples to use Spark on this data refer to the wiki, e.g.
+
+- Modify and Transform the data for further analytics
+- Basic analytics
+- More advanced analytics
 
 ## TODO
 
