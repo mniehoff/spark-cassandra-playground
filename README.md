@@ -81,13 +81,13 @@ To start the spark shell switch into the spark install dir and run
 
 ```./bin/spark-shell --jars ~/path/to/jar/spark-cassandra-connector-assembly-1.3.0-SNAPSHOT.jar --conf spark.cassandra.connection.host=localhost --driver-memory 3g ```
 
-We need 3g of memory for caching large ratings rdds. If your cassandra Cluster is not running in localhost change the parameter accordingly.
+We need 3g of memory for caching large ratings rdds. If your Cassandra cluster is not running in localhost change the parameter accordingly.
 
 For some examples to use Spark on this data refer to the wiki, e.g.
 
-- Modify and Transform the data for further analytics
-- Basic analytics
-- More advanced analytics
+* [Modify and Transform the data for further analytics](https://github.com/mniehoff/spark-cassandra-playground/wiki/Modify-and-Transform-the-data-for-further-analytics)
+* [Basic analytics](https://github.com/mniehoff/spark-cassandra-playground/wiki/Basic-analytics)
+* [More advanced analytics](https://github.com/mniehoff/spark-cassandra-playground/wiki/More-advanced-analytics)
 
 ## TODO
 
