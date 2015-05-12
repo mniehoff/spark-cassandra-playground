@@ -83,11 +83,14 @@ To start the spark shell switch into the spark install dir and run
 
 We need 3g of memory for caching large ratings rdds. If your Cassandra cluster is not running in localhost change the parameter accordingly.
 
+Then import the Cassandra Spark Classes:
+
+```import com.datastax.spark.connector._, org.apache.spark.SparkConf, org.apache.spark.SparkContext, org.apache.spark.SparkContext._````
+
 For some examples to use Spark on this data refer to the wiki, e.g.
 
 * [Modify and Transform the data for further analytics](https://github.com/mniehoff/spark-cassandra-playground/wiki/Modify-and-Transform-the-data-for-further-analytics)
 * [Basic analytics](https://github.com/mniehoff/spark-cassandra-playground/wiki/Basic-analytics)
-* [More advanced analytics](https://github.com/mniehoff/spark-cassandra-playground/wiki/More-advanced-analytics)
 
 ## TODO
 
