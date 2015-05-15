@@ -27,7 +27,7 @@ Example with the CCM:
 
         ccm create --dse -v 4.6.5 --dse-username=<<dseUserName>> --dse-password=<<dsePassword>> -o 5.1.1 -n 3 moviedb -s
 
-- Creates Cluster "moviedb" with 3 Nodes, using Cassandra 2.1.6, starts the Cluster
+- Creates Cluster "moviedb" with 3 Nodes, using Cassandra 2.1.5, starts the Cluster
 
         ccm create moviedb -v binary:2.1.6 -n 3 -s
 
