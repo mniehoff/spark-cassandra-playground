@@ -87,10 +87,7 @@ Then import the Cassandra Spark Classes:
 
 ```import com.datastax.spark.connector._, org.apache.spark.SparkConf, org.apache.spark.SparkContext, org.apache.spark.SparkContext._````
 
-For some examples to use Spark on this data refer to the wiki, e.g.
-
-* [Modify and Transform the data for further analytics](https://github.com/mniehoff/spark-cassandra-playground/wiki/Modify-and-Transform-the-data-for-further-analytics)
-* [Basic analytics](https://github.com/mniehoff/spark-cassandra-playground/wiki/Basic-analytics)
+For some examples to use Spark on this data refer to the docs folder.
 
 ## TODO
 
