@@ -14,12 +14,12 @@ object SimpleMovieRecommendation {
 	 // .set("spark.executor.memory","3g")
     val sc = new SparkContext("spark://Matthiass-MacBook-Pro.local:7077", "Simple Movie Recommendation", conf)
 
-	val data = sc.cassandraTable[RatingRaw]("movie","ratings_by_movie")
-	val ratings = data.map{case RatingRaw(user,movie,rating,_) => Rating(user.toInt,movie.toInt,rating)}
+	val data = sc.cassandraTable[RatingRaw]("movie","ratings_by_movie_4m")
+	val ratings = data.map{case RatingRaw(user,movie,rating,_) => Rating(user.toInt,movie.toInt,rating-2.5)}.cache
 
-	val rank = 10
+	val rank = 20
 	val numIterations = 20
-	val model = ALS.train(ratings, rank, numIterations)
+	val model = ALS.trainImplicit(ratings, rank, numIterations)
 
 	// Evaluate the model on rating data
 	val usersProducts = ratings.map { case Rating(user, product, rate) =>
@@ -36,7 +36,7 @@ object SimpleMovieRecommendation {
 	  val err = (r1 - r2)
 	  err * err
 	}.mean()
-	println("Mean Squared Error = " + MSE)
+	println("Rank: " + rank + ", Iterations: " +  numIterations + ", Mean Squared Error = " + MSE)
 
   }
 }
