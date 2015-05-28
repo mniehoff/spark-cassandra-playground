@@ -3,7 +3,6 @@ import org.apache.spark.mllib.recommendation.ALS
 import org.apache.spark.mllib.recommendation.MatrixFactorizationModel
 import org.apache.spark.mllib.recommendation.Rating
 import scala.util.Random
-import java.nio.file.{ Paths, Files }
 import org.apache.log4j.Logger
 import org.apache.log4j.Level
 
@@ -57,6 +56,8 @@ object AdvancedRecommendation {
       println("%2d".format(i) + ": " + movieMap(r.product))
       i += 1
     }
+	
+	// if you want to do more stuff you should eventually clean up cached rdds with .unpersist(blocking = false)
   }
 
   /** Elicitate ratings from command-line. */
@@ -95,19 +96,12 @@ object AdvancedRecommendation {
   }
 
   def getModel(sc: SparkContext, ratings: com.datastax.spark.connector.rdd.CassandraRDD[RatingRaw], userRatings:  org.apache.spark.rdd.RDD[Rating]): MatrixFactorizationModel = {
-//    if (!Files.exists(Paths.get("model"))) {
       println("generate new model")
-
       val ratingsForTraining = ratings.map { case RatingRaw(user, movie, rating, _) => Rating(user.toInt, movie.toInt, rating-2.5) }.union(userRatings)
-
       val rank = 10
       val numIterations = 20
       val model = ALS.trainImplicit(ratingsForTraining, rank, numIterations)
-//    model.save(sc, "model")
       return model
-//    } else {
-//      println("loading existing model")
-//      return MatrixFactorizationModel.load(sc, "model")
-//    }
   }
+  
 }
