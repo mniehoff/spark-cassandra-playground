@@ -71,7 +71,7 @@ Create the Cassandra Keyspace and Tables using the provided schema.cql
 
         COPY movies_raw (movieid, title, genres) FROM 'data-changed/movies.csv' with header= true;
         COPY tags_by_user FROM 'data-original/tags.csv' WITH header=true;
-        COPY ratings_by_user FROM 'data-original/ratings.csv' with header=true 
+        COPY ratings_by_user FROM 'data-original/ratings.csv' with header=true; 
 
 Now all the data you need is inside your cassandra cluster and you are ready to go!
 
