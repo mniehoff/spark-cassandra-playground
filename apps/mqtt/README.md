@@ -15,6 +15,6 @@ CREATE KEYSPACE mqtt WITH replication = {'class': 'SimpleStrategy', 'replication
 CREATE TABLE mqtt.sensors(sensorId uuid, time timeuuid, temperature double, primary key(sensorId,time));
 ```
 
-MQTTPublisher:  produces Messages
-MqttStreaming:  Spark Streaming App. Process the messages and store them to Cassandra
-SimpleAnalysis: Spark Batch App. Does a simple analysis on the stored data
+- MQTTPublisher:  produces Messages
+- MqttStreaming:  Spark Streaming App. Process the messages and store them to Cassandra
+- SimpleAnalysis: Spark Batch App. Does a simple analysis on the stored data
